@@ -18,7 +18,7 @@ def username = 'maven:3-alpine'
     stages {
         stage('Back-end') {
             agent {
-                docker { image ${username} }
+                docker { image "${username}" }
             }
             steps {
                 sh 'mvn --version'
