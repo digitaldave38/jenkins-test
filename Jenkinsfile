@@ -32,5 +32,4 @@ stages {
             retry(3)
         }
      }
-   }   
 }
