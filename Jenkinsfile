@@ -1,19 +1,17 @@
-
 pipeline {
-    agent any
+    agent {
+        node { label 'my-docker' }
+    }
     stages {
-        stage('Browser Tests') {
-            parallel {
-                stage('Chrome') {
-                    steps {
-                        echo "Chrome Tests"
-                    }
+        stage("Build") {
+            agent {
+                docker {
+                reuseNode true
+                image 'maven:3.5.0-jdk-8'
                 }
-                stage('Firefox') {
-                    steps {
-                        echo "Firefox Tests"
-                    }
-                }
+            }
+            steps {
+                sh 'mvn install'
             }
         }
     }
