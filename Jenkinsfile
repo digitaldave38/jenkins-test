@@ -3,12 +3,13 @@ pipeline {
     agent none 
 
      environment {
-       CXX = "g++-4.9.4"
-       LD = "g++-4.9.4"
-       ETL_MKL = 'true'
+        ENV_STACK = 'staging'
     }
-
-
+   
+    parameters {
+        string(name: 'RELEASE_VERSION', defaultValue: '1.0.0', description: 'Application git release tag version')
+    }
+   
     stages {
         stage('Build') {
             agent {
@@ -17,6 +18,7 @@ pipeline {
                 }
             }
             steps {
+                echo "Deploying ${params.RELEASE_VERSION} in ${env.ENV_STACK}"
                 sh 'python -m py_compile sources/add2vals.py sources/calc.py'
             }
         }
