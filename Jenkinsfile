@@ -1,23 +1,6 @@
-stage('Deliver') {
-            agent {
-                docker {
-                    image 'cdrx/pyinstaller-linux:python2'
-                }
-            }
-            steps {
-                sh 'pyinstaller --onefile sources/add2vals.py'
-            }
-            post {
-                success {
-                    archiveArtifacts 'dist/add2vals'
-                }
-            }
-        }
-so that you end up with:
-
-pipeline {
-    agent none
+  agent none
     stages {
+        stage('Back-end') {
         stage('Build') {
             agent {
                 docker {
@@ -30,11 +13,13 @@ pipeline {
         }
         stage('Test') {
             agent {
+                docker { image 'maven:3-alpine' }
                 docker {
                     image 'qnib/pytest'
                 }
             }
             steps {
+                sh 'mvn --version'
                 sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
             }
             post {
@@ -43,14 +28,27 @@ pipeline {
                 }
             }
         }
+        stage('Front-end') {
         stage('Deliver') { 
             agent {
+                docker { image 'node:7-alpine' }
                 docker {
                     image 'cdrx/pyinstaller-linux:python2' 
                 }
             }
             steps {
+                echo $"{MY_TEST}"
+                sh 'node --version'
+    
+           } 
                 sh 'pyinstaller --onefile sources/add2vals.py' 
             }
             post {
                 success {
+                    archiveArtifacts 'dist/add2vals' 
+                }
+            }
+        }
+    }
+  }   
+} 
