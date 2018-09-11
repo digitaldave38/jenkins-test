@@ -24,5 +24,11 @@ pipeline {
                 sh 'python --version'
             }
         }
+        stage("Destroy build") {
+            agent {
+                
+            }
+        }
+   
     }
 }
