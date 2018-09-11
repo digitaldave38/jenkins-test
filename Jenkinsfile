@@ -2,7 +2,6 @@ pipeline {
     agent any
         stages {
             stage('Build') {
-                parallel { 
                 when {
                     expression {
                         "foo" == "bar"
@@ -26,6 +25,18 @@ pipeline {
             }
             steps {
                 echo 'Deploying'
+            
+        stage('Browser Tests') {
+            parallel {
+                stage('Chrome') {
+                    steps {
+                        echo "Chrome Tests"
+                    }
+                }
+                stage('Firefox') {
+                    steps {
+                        echo "Firefox Tests"
+                    }
             }
         }
     }
