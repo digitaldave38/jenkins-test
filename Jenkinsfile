@@ -10,7 +10,6 @@ pipeline {
     parameters {
         string(name: 'test', defaultValue: '', description: 'test')
         string(name: 'docker-image', defaultValue: 'python:3.5.1', description: 'docker image')
-        )
    }
 
 
