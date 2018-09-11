@@ -15,7 +15,7 @@ pipeline {
     stages {
         stage('Back-end') {
             agent {
-                docker { image "${param.docker-test}" }
+                docker { image '${param.docker-test}' }
             }
             steps {
                 sh 'mvn --version'
