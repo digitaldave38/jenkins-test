@@ -4,7 +4,7 @@ pipeline {
     }
   
     environment {
-        MY_TEST - ""
+        MY_TEST = ""
 
 
     }
