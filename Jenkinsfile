@@ -18,7 +18,7 @@ pipeline {
             agent {
                 docker {
                 reuseNode true
-                image ${params.docker-test}
+                image 'python:3.5.1'
                 }
             }
             steps {
