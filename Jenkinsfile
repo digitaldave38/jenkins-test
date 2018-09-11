@@ -11,16 +11,17 @@ pipeline {
         string(name: 'test', defaultValue: '', description: 'test')
    }
 
+
     stages {
         stage("Build") {
             agent {
                 docker {
                 reuseNode true
-                image 'hello-world:latest'
+                image 'python:3.5.1'
                 }
             }
             steps {
-                sh 'ls'
+                sh 'python --version'
             }
         }
     }
