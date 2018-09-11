@@ -4,15 +4,13 @@ pipeline {
     }
   
     environment {
-        MY_TEST = ""
-
-
+        MY_TEST = "hjghjgjhghjghjghjg"
     }
+
     parameters {
         string(name: 'test', defaultVaule: '', description: 'test')
+   }
 
-
-    }
     stages {
         stage("Build") {
             agent {
@@ -23,7 +21,7 @@ pipeline {
             }
             steps {
                 sh 'ls'
-        
+            }
         }
     }
 }
