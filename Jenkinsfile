@@ -5,7 +5,7 @@ def agentLabel
 if (env.JENKINS_URL.contains('')) {
     proxyURL = "127.0.0.1:8000"
     agentLabel = "master"
-{ else }
+} else {
     proxyURL "myproxy.mytest:8080"
     agentLabel = "testing-slave"
 }
