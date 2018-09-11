@@ -14,22 +14,21 @@ pipeline {
 
 
     stages {
-        stage("Build") {
+        stage('Back-end') {
             agent {
-                docker {
-                image 'python:3.5.1' 
-                args '-u root:root'
-                }
+                docker { image 'maven:3-alpine' }
             }
             steps {
-                echo "running ${params.docker-test}"
-                sh 'python --version'
+                sh 'mvn --version'
             }
         }
-        stage("Destroy build") {
-           steps {
-               echo "delete ${params.docker-test}"
-               sh 'docker rmi $(docker images -a -q) --force'
+        stage('Front-end') {
+            agent {
+                docker { image 'node:7-alpine' }
+            }
+            steps {
+                sh 'node --version'
+    
            } 
         }
     }
