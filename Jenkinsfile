@@ -9,7 +9,7 @@ pipeline {
 
     parameters {
         string(name: 'test', defaultValue: '', description: 'test')
-        string(name: 'docker-image', defaultValue: 'python:3.5.1', description: 'docker image')
+        string(name: 'docker-test', defaultValue: 'python:3.5.1', description: 'docker image')
    }
 
 
@@ -18,17 +18,17 @@ pipeline {
             agent {
                 docker {
                 reuseNode true
-                image "'${params.docker-image}''"
+                image "'${params.docker-test}''"
                 }
             }
             steps {
-                echo "running ${params.docker-image}"
+                echo "running ${params.docker-test}"
                 sh 'python --version'
             }
         }
         stage("Destroy build") {
            steps {
-               echo "delete ${params.docker-image}"
+               echo "delete ${params.docker-test}"
                sh 'docker rmi $(docker images -a -q) --force'
            } 
         }
