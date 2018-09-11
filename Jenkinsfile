@@ -1,10 +1,6 @@
 pipeline {
     
-    agent any {
-    }
-        
-    label "master || docker"
-    
+    agent none 
 
      environment {
        CXX = "g++-4.9.4"
