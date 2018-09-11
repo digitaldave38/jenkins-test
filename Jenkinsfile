@@ -2,6 +2,7 @@ pipeline {
     agent any
         stages {
             stage('Build') {
+                parallel { 
                 when {
                     expression {
                         "foo" == "bar"
