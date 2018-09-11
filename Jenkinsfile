@@ -18,7 +18,7 @@ pipeline {
             agent {
                 docker {
                 reuseNode true
-                image "'${params.docker-test}''"
+                image ${params.docker-test}
                 }
             }
             steps {
