@@ -9,14 +9,16 @@ pipeline {
 
     parameters {
         string(name: 'test', defaultValue: '', description: 'test')
-        string(name: 'docker-test', defaultValue: '', description: 'docker image')
+        string(name: 'docker-test', defaultValue: 'maven:3-alpine', description: 'docker image')
    }
+
+def username = 'maven:3-alpine'
 
 
     stages {
         stage('Back-end') {
             agent {
-                docker { image 'maven:3-alpine' }
+                docker { image ${username} }
             }
             steps {
                 sh 'mvn --version'
