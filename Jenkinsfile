@@ -30,5 +30,4 @@ stages {
         options {
             timeout(time: 2, unit: 'MINUTES')
             retry(3)
-    }
 }
