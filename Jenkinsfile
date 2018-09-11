@@ -18,7 +18,7 @@ pipeline {
                 }
             }
             steps {
-                echo "Deploying ${params.RELEASE_VERSION} in ${env.ENV_STACK}"
+                echo "Building ${params.RELEASE_VERSION} in ${env.ENV_STACK}"
                 sh 'python -m py_compile sources/add2vals.py sources/calc.py'
             }
         }
@@ -29,6 +29,7 @@ pipeline {
                 }
             }
             steps {
+                echo "Testing ${params.RELEASE_VERSION} in ${env.ENV_STACK}"
                 sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
             }
             post {
@@ -44,6 +45,7 @@ pipeline {
                 }
             }
             steps {
+                echo "Delivering ${params.RELEASE_VERSION} in ${env.ENV_STACK}"
                 sh 'pyinstaller --onefile sources/add2vals.py' 
             }
             post {
