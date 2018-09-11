@@ -2,17 +2,24 @@ pipeline {
     agent {
         node { label 'master' }
     }
+    triggers {
+
+    }
+    environment {
+
+
+    }
+    parameters {
+
+    }
     stages {
         stage("Build") {
             agent {
                 docker {
-                reuseNode false
-                image 'maven:3.5.0-jdk-8'
+                reuseNode true
+                image 'hello-world:latest'
                 }
             }
-            steps {
-                sh 'mvn install'
-            }
-        }
+         }
     }
 }
