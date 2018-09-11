@@ -2,14 +2,15 @@ pipeline {
     agent {
         node { label 'master' }
     }
-    triggers {
-
-    }
+  
     environment {
+        MY_TEST - ""
 
 
     }
     parameters {
+        string(name: 'test', defaultVaule: '', description: 'test')
+
 
     }
     stages {
@@ -20,6 +21,9 @@ pipeline {
                 image 'hello-world:latest'
                 }
             }
-         }
+            steps {
+                sh 'ls'
+        
+        }
     }
 }
