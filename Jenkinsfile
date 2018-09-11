@@ -25,10 +25,7 @@ pipeline {
             }
         }
         stage("Destroy build") {
-            agent {
-                
-            }
+            
         }
-   
     }
 }
