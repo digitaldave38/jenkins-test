@@ -25,9 +25,11 @@ pipeline {
             }
         }
         stage("Destroy build") {
-           }
            steps {
                sh 'docker rmi $(docker images -a -q) --force'
            } 
         }
     }
+
+
+   
