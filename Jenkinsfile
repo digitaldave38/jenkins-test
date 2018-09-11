@@ -15,7 +15,9 @@ pipeline {
     stages {
         stage('Back-end') {
             agent {
-                docker "{ image ${paramaters.docker-test}"" }
+                docker { 
+                    image "${paramaters.docker-test}'" 
+                }
                 
             }
             steps {
