@@ -12,9 +12,6 @@ pipeline {
         string(name: 'docker-test', defaultValue: 'maven:3-alpine', description: 'docker image')
    }
 
-def username = 'maven:3-alpine'
-
-
     stages {
         stage('Back-end') {
             agent {
