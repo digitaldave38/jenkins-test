@@ -13,7 +13,7 @@ pipeline {
         text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
         booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
-        file(name: "FILE", description: "Choose a file to upload")
+        file(name: "FILE", description: "Choose a file to upload?")
     }
    
     stages {
